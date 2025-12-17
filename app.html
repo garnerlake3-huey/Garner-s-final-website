@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basketball Trivia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* CUSTOM STYLESHEET
+           Requirements met:
+           - At least 4 style definitions
+           - Font color specification
+           - Font family specification
+           - Div positioning/styling
+           - Custom background 
+        */
+
+        /* 1. Custom Background */
+        body.scratch-mode {
+            background-color: #fff7ed; /* Light orange base */
+            background-image: radial-gradient(circle at 10% 20%, rgb(255, 245, 235) 0%, rgb(255, 237, 213) 90%);
+            min-height: 100vh;
+        }
+
+        /* 2. Style definition: Custom Font Family */
+        .custom-heading-font {
+            font-family: 'Verdana', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* 3. Style definition: Custom Font Color */
+        .custom-text-color {
+            color: #c2410c; /* Dark orange/rust */
+        }
+
+        /* 4. Style definition: Custom Border/Box for Divs (Positioning) */
+        .custom-content-box {
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 2px solid #ea580c;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* 5. Additional Style: Custom Links */
+        .custom-link {
+            color: #0369a1;
+            text-decoration: underline;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+        .custom-link:hover {
+            color: #0c4a6e;
+        }
+
+        /* --- BASKETBALL TRIVIA APP STYLES --- */
+        .app-container {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            max-width: 600px;
+            margin: 2rem auto;
+            box-shadow: 0 10px 25px rgba(234, 88, 12, 0.3);
+        }
+
+        .question-box {
+            background-color: white;
+            color: #333;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+
+        .option-btn {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 0.75rem 1rem;
+            margin: 0.5rem 0;
+            border: 2px solid #fdba74;
+            border-radius: 0.5rem;
+            background-color: white;
+            color: #333;
+            font-weight: 500;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .option-btn:hover {
+            background-color: #ffedd5;
+            border-color: #ea580c;
+        }
+
+        /* Dynamic classes added by JS */
+        .option-btn.correct {
+            background-color: #dcfce7 !important;
+            border-color: #22c55e !important;
+            color: #166534 !important;
+        }
+
+        .option-btn.incorrect {
+            background-color: #fee2e2 !important;
+            border-color: #ef4444 !important;
+            color: #991b1b !important;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-gray-900 text-white p-4 sticky top-0 z-50 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-xl font-bold tracking-wider">GARNER D. LAKE</div>
+            <div class="space-x-4 text-sm font-medium">
+                <a href="index.html" class="hover:text-orange-400 transition uppercase">Resume</a>
+                <a href="scratch.html" class="hover:text-orange-400 transition uppercase">Basketball Passion</a>
+                <a href="app.html" class="text-orange-400 font-bold uppercase border-b-2 border-orange-400">Trivia App</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- APP CONTENT -->
+    <div class="min-h-screen flex items-center justify-center p-4">
+        <div class="app-container w-full">
+            <h1 class="text-4xl font-black mb-2">FULL COURT TRIVIA</h1>
+            <p class="text-orange-100 mb-6 font-medium">Test Your Basketball Knowledge</p>
+            
+            <div id="quiz-container">
+                <!-- Questions injected here by JS -->
+            </div>
+            
+            <div id="result-container" class="hidden text-white">
+                <!-- Results injected here by JS -->
+            </div>
+
+            <div class="mt-8 pt-6 border-t border-orange-500/30">
+                <a href="scratch.html" class="text-orange-100 hover:text-white text-sm font-medium underline">Back to Basketball Page</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Quiz App Logic
+        const questions = [
+            {
+                q: "Who holds the record for most points in a single NBA game?",
+                options: ["Michael Jordan", "Kobe Bryant", "Wilt Chamberlain", "LeBron James"],
+                answer: 2
+            },
+            {
+                q: "Which team has won the most NBA championships?",
+                options: ["Chicago Bulls", "Boston Celtics", "LA Lakers", "Golden State Warriors"],
+                answer: 1 
+            },
+            {
+                q: "What year was the NBA founded?",
+                options: ["1939", "1946", "1952", "1960"],
+                answer: 1
+            },
+            {
+                q: "How high is a regulation basketball rim?",
+                options: ["9 feet", "10 feet", "11 feet", "12 feet"],
+                answer: 1
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        // DOM Elements
+        const quizContainer = document.getElementById('quiz-container');
+        const resultContainer = document.getElementById('result-container');
+
+        function startQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            resultContainer.classList.add('hidden');
+            quizContainer.classList.remove('hidden');
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const q = questions[currentQuestion];
+            
+            let html = `
+                <div class="question-box shadow-inner">
+                    <p class="font-bold text-lg mb-4 text-orange-600">Question ${currentQuestion + 1}/${questions.length}</p>
+                    <p class="text-xl mb-6">${q.q}</p>
+                    <div class="space-y-2">
+            `;
+            
+            q.options.forEach((opt, index) => {
+                // Note: Using window function to ensure global scope access from inline onclick
+                html += `<button onclick="checkAnswer(${index})" class="option-btn">${opt}</button>`;
+            });
+            
+            html += `</div></div>`;
+            quizContainer.innerHTML = html;
+        }
+
+        function checkAnswer(selectedIndex) {
+            const btns = document.querySelectorAll('.option-btn');
+            const correctIndex = questions[currentQuestion].answer;
+            
+            // Disable all buttons immediately
+            btns.forEach(btn => btn.disabled = true);
+            
+            // Highlight answers
+            if(selectedIndex === correctIndex) {
+                btns[selectedIndex].classList.add('correct');
+                score++;
+            } else {
+                btns[selectedIndex].classList.add('incorrect');
+                btns[correctIndex].classList.add('correct');
+            }
+            
+            // Wait before moving to next question
+            setTimeout(() => {
+                currentQuestion++;
+                if(currentQuestion < questions.length) {
+                    showQuestion();
+                } else {
+                    showResults();
+                }
+            }, 1500);
+        }
+
+        function showResults() {
+            quizContainer.classList.add('hidden');
+            resultContainer.classList.remove('hidden');
+            
+            let message = "";
+            if (score === questions.length) message = "MVP Performance! 🏆";
+            else if (score > questions.length / 2) message = "Solid Game! 🏀";
+            else message = "Back to Practice! 🧱";
+            
+            resultContainer.innerHTML = `
+                <p class="text-6xl mb-4 font-black">${score}/${questions.length}</p>
+                <p class="text-2xl font-bold mb-6">${message}</p>
+                <button onclick="startQuiz()" class="bg-white text-orange-600 px-8 py-3 rounded-full text-lg font-bold hover:bg-gray-100 transition shadow-lg">Play Again</button>
+            `;
+        }
+
+        // Start the quiz when the page loads
+        document.addEventListener('DOMContentLoaded', startQuiz);
+    </script>
+</body>
+</html>

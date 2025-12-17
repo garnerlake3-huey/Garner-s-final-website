@@ -1,0 +1,134 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: #F3F4F6; /* soft gray background */
+    color: #1F2937; /* dark navy text */
+    margin: 0;
+    padding: 0;
+}
+
+/* ===== Navigation ===== */
+nav {
+    background-color: #1F2937; /* dark navy */
+    color: #FFFFFF;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+nav a {
+    color: #F97316; /* vibrant orange */
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #14B8A6; /* teal accent on hover */
+}
+
+/* ===== Container for sections ===== */
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 1rem 2rem;
+}
+
+/* ===== Cards / Sections ===== */
+.section-card {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* ===== Headers ===== */
+h1, h2, h3, h4 {
+    font-family: 'Arial', sans-serif;
+    color: #1F2937;
+    margin-bottom: 0.5rem;
+}
+
+h2 {
+    border-left: 5px solid #F97316; /* orange border for section headers */
+    padding-left: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+/* ===== Lists ===== */
+ul, ol {
+    margin-left: 1.5rem;
+    padding-left: 0;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== Buttons ===== */
+button {
+    background-color: #F97316; /* orange button */
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #14B8A6; /* teal hover */
+}
+
+/* ===== Images ===== */
+img {
+    max-width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* ===== Iframes (YouTube / Tableau) ===== */
+iframe {
+    width: 100%;
+    max-width: 800px;
+    height: 450px;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* ===== Footer / Contact Links ===== */
+a.contact-link {
+    color: #14B8A6; /* teal links */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a.contact-link:hover {
+    color: #F97316; /* orange hover */
+}
+
+/* ===== Optional: Gradient Background Section ===== */
+.section-gradient {
+    background: linear-gradient(135deg, #F97316, #14B8A6);
+    color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}

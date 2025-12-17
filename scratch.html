@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garner's Passions</title>
+    <!-- Requirement: Link to custom stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Inline styles to override complex external styles and look "beginner" -->
+    <style>
+        /* Simple Page Layout */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            /* Custom background requirement is handled in styles.css via .scratch-mode class */
+        }
+
+        h1 {
+            color: #c2410c; /* Matches custom-text-color requirement */
+            text-align: center;
+            text-decoration: underline;
+        }
+
+        .nav-menu {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+
+        .nav-menu a:hover {
+            text-decoration: underline;
+        }
+
+        /* Requirement: 3 Divs for positioning/styling */
+        .my-div {
+            background-color: white;
+            border: 2px solid orange; /* Simple border */
+            padding: 20px;
+            margin-bottom: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid black;
+            margin-top: 10px;
+        }
+
+        .center-text {
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="scratch-mode"> <!-- Uses custom background from styles.css -->
+
+    <!-- Navigation -->
+    <div class="nav-menu">
+        <a href="resume.html">Resume</a>
+        <a href="scratch.html"><strong>Basketball Passion</strong></a>
+        <a href="app.html">Trivia App</a>
+    </div>
+
+    <h1>Ball is Life: My Journey</h1>
+    
+    <p class="center-text">Welcome to my page about basketball. It is my favorite sport!</p>
+    
+    <!-- Requirement: On-page anchor -->
+    <p class="center-text"><a href="#stats-graph">Click here to see the LeBron Stats</a></p>
+
+    <!-- Div 1: Why I Play -->
+    <div class="my-div">
+        <h2 class="custom-text-color">Why I Play</h2> <!-- Uses custom font color class -->
+        <p>I am very passionate about the sport of basketball, which I have been playing since the age of 5. It has helped me meet my closest friends, develop a competitive mindset, and look to excel in something I truly love!</p>
+        <p>Beyond just a game, it's a discipline. The hours spent in the gym, the early mornings, and the teamwork required to win have shaped my work ethic in every other area of life, from school to business.</p>
+        
+        <!-- Requirement: Image not from Bootstrap -->
+        <img src="https://img.freepik.com/premium-photo/vibrant-tropical-basketball-court-surrounded-by-palm-trees-crystalclear-waterr_693425-39381.jpg" alt="Basketball Court" width="500">
+    </div>
+
+    <!-- Div 2: Training & Video -->
+    <div class="my-div">
+        <h2 class="custom-text-color">My Training Routine</h2>
+        <p>To get better, I follow a specific plan:</p>
+
+        <!-- Requirement: Nested List -->
+        <ol>
+            <li>Warm-up & Stretching</li>
+            <li>Skill Development
+                <ul>
+                    <li>Ball Handling (15 mins)</li>
+                    <li>Shooting Form (Free throws & Mid-range)</li>
+                    <li>3-Point Repetitions (100 makes)</li>
+                </ul>
+            </li>
+            <li>Strength & Conditioning</li>
+            <li>Scrimmage / Live Play</li>
+        </ol>
+
+        <h3 class="center-text">Hoops Highlight Video</h3>
+        <!-- Requirement: Embedded YouTube Video -->
+        <div class="center-text">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/IVdJ6Z9jluc?si=rDmUj2nyjdoDj3tF" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <p>Check out this cool clip!</p>
+        </div>
+    </div>
+
+    <!-- Div 3: Tableau Graph -->
+    <div class="my-div" id="stats-graph"> <!-- ID for Anchor Link -->
+        <h2 class="custom-text-color">LeBron vs. Luka Stats (Age 20)</h2>
+        <p>This graph compares two of the best players when they were young.</p>
+
+        <!-- Requirement: Live Tableau Embed -->
+        <div class='tableauPlaceholder' id='viz1765944568830' style='position: relative'>
+            <noscript><a href='#'><img alt='Lebron Or Luka At Age 20? ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Lu&#47;LukavLebron&#47;Luka_Lebron&#47;1_rss.png' style='border: none' /></a></noscript>
+            <object class='tableauViz' style='display:none;'>
+                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+                <param name='embed_code_version' value='3' /> 
+                <param name='site_root' value='' />
+                <param name='name' value='LukavLebron&#47;Luka_Lebron' />
+                <param name='tabs' value='no' />
+                <param name='toolbar' value='yes' />
+                <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Lu&#47;LukavLebron&#47;Luka_Lebron&#47;1.png' /> 
+                <param name='animate_transition' value='yes' />
+                <param name='display_static_image' value='yes' />
+                <param name='display_spinner' value='yes' />
+                <param name='display_overlay' value='yes' />
+                <param name='display_count' value='yes' />
+                <param name='language' value='en-US' />
+            </object>
+        </div>
+        <script type='text/javascript'>
+            var divElement = document.getElementById('viz1765944568830');
+            var vizElement = divElement.getElementsByTagName('object')[0];
+            if ( divElement.offsetWidth > 800 ) { vizElement.style.width='100%';vizElement.style.height='802px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='100%';vizElement.style.height='802px';} else { vizElement.style.width='100%';vizElement.style.height='1200px';}
+            var scriptElement = document.createElement('script');
+            scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+            vizElement.parentNode.insertBefore(scriptElement, vizElement);
+        </script>
+
+        <br>
+        <div class="center-text">
+            <!-- Requirement: Link to Web App -->
+            <a href="app.html" style="background-color: orange; color: white; padding: 15px; text-decoration: none; border-radius: 5px; font-weight: bold;">
+                CLICK HERE FOR TRIVIA GAME ->
+            </a>
+        </div>
+    </div>
+
+    <br>
+    <div class="center-text">
+        <a href="resume.html">Back to Resume</a>
+    </div>
+
+</body>
+</html>
